@@ -1,62 +1,70 @@
 # Clipboard Manager for macOS
 
-Native Swift/SwiftUI menu-bar clipboard manager.
+<p align="center">
+  <strong>A fast, lightweight and privacy-focused clipboard manager for macOS.</strong>
+</p>
 
-## v0.8
+<p align="center">
+  Keep your recently copied text and images available instantly from your menu bar.
+</p>
 
-- Launch at Login is enabled automatically on the first launch so Clipboard Manager starts quietly with macOS.
-- Launch at Login can be turned on/off from **Settings → General**. The user's choice is remembered.
-- Runs as a menu-bar utility; no history window is opened automatically at login.
-- Refined native macOS visual design with standard window controls, adaptive materials, and cleaner controls.
-- Clean, compact clipboard rows with hover/selection states and image previews.
-- Search field is automatically focused when the history opens.
-- Click any clipboard item to paste it into the application/cursor that was active before opening Clipboard Manager.
-- `Return` also pastes the selected item.
-- The selected item is restored to `NSPasteboard` before automatic paste.
-- Automatic `⌘V` is sent to the previous application; macOS Accessibility permission may be required.
-- Resizable history window with sensible minimum and maximum dimensions.
-- Closing the history window only hides it; it does not quit the application.
-- Settings remains a separate window.
-- Quit is available from the menu-bar menu and via `⌘Q`.
-- Text and image history, duplicate text handling, search, deletion, retention and memory limits.
-- App-owned clipboard writes are ignored to prevent duplicate image entries.
-- Timed retention is enforced against the item's original copy time; changing to 5 Minutes immediately removes items already older than 5 minutes.
-- Clipboard polling runs continuously in the common run-loop mode for reliable copy detection.
-- Clipboard history is RAM-only and is cleared when the app exits. Launch at Login only controls startup and never persists clipboard contents.
+<p align="center">
 
-## Keyboard
+![macOS](https://img.shields.io/badge/macOS-13%2B-black?logo=apple)
+![Swift](https://img.shields.io/badge/Swift-6-orange?logo=swift)
+![SwiftUI](https://img.shields.io/badge/UI-SwiftUI%20%2B%20AppKit-blue)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey?logo=apple)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-- `⌘⇧V`: show/hide clipboard history
-- `↑` / `↓`: navigate
-- `Return`: paste selected item
-- `Delete`: delete selected item when search is not editing
-- `Esc`: close history
-- Click an item: paste into the previous application/cursor
+</p>
 
-## Automatic paste permission
+---
 
-The app always restores the selected content to `NSPasteboard`. To automatically send `⌘V` to another application, macOS may require Accessibility permission. Grant Clipboard Manager access in:
+## 📋 Overview
 
-**System Settings → Privacy & Security → Accessibility**
+Clipboard Manager is a native macOS utility that makes it easy to access and reuse recently copied content.
 
-Without permission, the clipboard item is still restored and can be pasted manually.
+Instead of repeatedly switching between applications to copy the same information, Clipboard Manager keeps your recent clipboard items available in one convenient place.
 
-## Launch at Login
+Press:
 
-On the first launch, Clipboard Manager registers itself as a macOS login item so it starts automatically after you sign in. You can disable this from **Settings → General**. If macOS reports that approval is required, approve Clipboard Manager in **System Settings → General → Login Items**.
+**⌘⇧V**
 
-## Build
+to open your clipboard history.
 
-```bash
-swift test
-swift build -c release
-./scripts/package.sh
-```
+Select an item and Clipboard Manager restores it to the clipboard and can paste it directly into the previously active application.
 
-The GitHub Actions build produces `ClipboardManager-macOS.zip` containing `ClipboardManager.app`.
+The application supports both **text and images** while keeping clipboard history in memory.
 
-## Distribution
+---
 
-For development/testing, the app can be distributed as a ZIP from GitHub Releases. An unsigned build may trigger macOS Gatekeeper on another Mac.
+## ✨ Features
 
-For a polished public release outside the Mac App Store, Apple provides Developer ID signing and notarization. These require Apple Developer Program membership.
+### Clipboard History
+
+- Store recently copied text
+- Store copied images
+- Automatically detect clipboard changes
+- Ignore duplicate clipboard entries
+- Move previously copied duplicate content to the top
+- Delete individual clipboard items
+- Clear the entire clipboard history
+
+### 🔍 Search
+
+Quickly find previously copied text using the built-in search.
+
+Search is:
+
+- Case-insensitive
+- Full-text based
+- Instant while typing
+
+Image items remain available even when searching for text.
+
+### ⚡ Quick Access
+
+Open Clipboard Manager from anywhere using:
+
+```text
+⌘⇧V
