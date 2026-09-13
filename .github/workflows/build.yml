@@ -1,0 +1,32 @@
+name: Build macOS App
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Swift version
+        run: swift --version
+      - name: Run tests
+        run: swift test
+      - name: Package
+        run: |
+          chmod +x scripts/package.sh
+          ./scripts/package.sh
+      - name: Verify package
+        run: |
+          unzip -t ClipboardManager-macOS.zip
+          unzip -l ClipboardManager-macOS.zip
+      - name: Upload ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClipboardManager-macOS
+          path: ClipboardManager-macOS.zip
+          if-no-files-found: error

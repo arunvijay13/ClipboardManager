@@ -1,0 +1,8 @@
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj/
+*.xcworkspace/
+.DS_Store
+ClipboardManager.app
+ClipboardManager-macOS.zip
